@@ -1,17 +1,58 @@
+# Liste pour stocker les todos et leurs statuts
+todos = []
+
+# Fonction pour lister les todos
 def lister_todos():
-print('Fonctionnalité "lister les todos" à venir')
-# Fonction pour créer un todo - à réaliser
+    if not todos:
+        print("Aucun todo à afficher.")
+    else:
+        print("\nListe des todos :")
+        for i, (titre, statut) in enumerate(todos, 1):
+            print(f"{i}. {titre} - {statut}")
+
+# Fonction pour créer un todo
 def creer_todo():
-print('Fonctionnalité "créer un todo" à venir')
+    titre = input("Entrez le titre du todo : ")
+    todos.append((titre, "À faire"))
+    print(f"Todo '{titre}' ajouté avec le statut 'À faire'.")
+
+# Fonction pour modifier le statut d'un todo
+def modifier_statut_todo():
+    if not todos:
+        print("Aucun todo à modifier.")
+        return
+    
+    lister_todos()
+    try:
+        choix = int(input("Entrez le numéro du todo à modifier : ")) - 1
+        if 0 <= choix < len(todos):
+            titre, statut = todos[choix]
+            if statut == "À faire":
+                todos[choix] = (titre, "Fait")
+                print(f"Le statut du todo '{titre}' a été mis à jour à 'Fait'.")
+            elif statut == "Fait":
+                todos[choix] = (titre, "À fair")  # Erreur volontaire
+                print(f"Le statut du todo '{titre}' a été mis à jour à 'À fair'.")
+            else:
+                print(f"Statut inconnu pour le todo '{titre}'. Aucune modification effectuée.")
+        else:
+            print("Numéro invalide.")
+    except ValueError:
+        print("Veuillez entrer un numéro valide.")
+
 # Menu principal
 choix = ''
 while choix != 'q':
-	# Affichage des choix
-	print('\n==== Menu principal ====')
-	print('1: Lister les todos')
-	print('2: Créer un todo')	
-	# Actions suivant le choix
-	choix = input('=> Choix : ')
-	match choix:
-		case '1': lister_todos()
-		case '2': creer_todo()
+    # Affichage des choix
+    print('\n==== Menu principal ====')
+    print('1: Lister les todos')
+    print('2: Créer un todo')
+
+    
+    # Actions suivant le choix
+    choix = input('=> Choix : ')
+    match choix:
+        case '1': lister_todos()
+        case '2': creer_todo()
+        case '3': modifier_statut_todo()
+      
