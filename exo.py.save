@@ -21,6 +21,9 @@ def modifier_statut_todo():
     if not todos:
         print("Aucun todo à modifier.")
         return
+# Fonction pour supprimer un todo - à réaliser
+def supprimer_todo():
+print('Fonctionnalité "supprimer un todo" à venir')
     
     lister_todos()
     try:
@@ -47,10 +50,7 @@ while choix != 'q':
     print('\n==== Menu principal ====')
     print('1: Lister les todos')
     print('2: Créer un todo')
-    print('3: Changer le statut d\'un todo')
-    print('4: Supprimer un todo')
-    print('q: quitter')
-    print('========================')
+
     
     # Actions suivant le choix
     choix = input('=> Choix : ')
@@ -58,6 +58,4 @@ while choix != 'q':
         case '1': lister_todos()
         case '2': creer_todo()
         case '3': modifier_statut_todo()
-        case '4': supprimer_todo()
-	case 'q': print('Au revoir')
-	case _: print('Choix invalide')
+      
